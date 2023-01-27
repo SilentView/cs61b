@@ -8,7 +8,6 @@ public class BasicInDemo {
 		 * of the specified type. */
 
 		/* Compare the calls below to the contents of BasicInDemo_input_file.txt */
-
 		int firstItemInFile = in.readInt();
 		double secondItemInFile = in.readDouble();
 		String thirdItemInFile = in.readString();
