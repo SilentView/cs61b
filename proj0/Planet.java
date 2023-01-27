@@ -23,8 +23,9 @@ public class Planet {
     public String imgFileName;
     /**
      * the gravitational constant, estimated to be 6.67*10^-11
+     * Note that this should be private
      */
-    public static double G = 6.67 * 1e-11;
+    private static double G = 6.67 * 1e-11;
     /**
      * A Planet having coordinates, mass, velocity  and image file
      */

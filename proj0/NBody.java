@@ -38,7 +38,11 @@ public class NBody {
     }
 
     /**
-     *
+     * get the initial state from a file, display the animation of duration T with discrete interval dt.
+     * @param args
+     * - args[0]: duration T
+     * - args[1]: discrete interval dt
+     * - args[2]: file path, the file containing initial state of the universe
      */
     public static void main(String[] args){
         //Store the 0th and 1st command line arguments as doubles named T and dt
