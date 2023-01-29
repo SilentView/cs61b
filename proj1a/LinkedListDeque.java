@@ -1,20 +1,20 @@
 public class LinkedListDeque<T> {
 
     private class Node {
-        public T item;
-        public Node prev;
-        public Node next;
+        private T item;
+        private Node prev;
+        private Node next;
 
-        public Node(){
+        Node() {
             item = null;
             prev = null;
             next = null;
         }
 
-        public Node(T x, Node _prev, Node _next) {
+        Node(T x, Node prevNode, Node nextNode) {
             item = x;
-            prev = _prev;
-            next = _next;
+            prev = prevNode;
+            next = nextNode;
         }
     }
 
@@ -31,7 +31,7 @@ public class LinkedListDeque<T> {
     /**
      * Creates an empty linked list deque.
      */
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         size = 0;
         sentBack = new Node();
         sentFront = new Node();
@@ -44,10 +44,10 @@ public class LinkedListDeque<T> {
      *  Adds an item of type T to the front of the deque.
      * @param item
      */
-    public void addFirst(T item){
-        Node new_node = new Node(item, sentFront, sentFront.next);
-        new_node.prev.next = new_node;
-        new_node.next.prev = new_node;
+    public void addFirst(T item) {
+        Node newNode = new Node(item, sentFront, sentFront.next);
+        newNode.prev.next = newNode;
+        newNode.next.prev = newNode;
         size += 1;
     }
 
@@ -55,10 +55,10 @@ public class LinkedListDeque<T> {
      *  Adds an item of type T to the back of the deque.
      * @param item
      */
-    public void addLast(T item){
-        Node new_node = new Node(item, sentBack.prev, sentBack);
-        new_node.prev.next = new_node;
-        new_node.next.prev = new_node;
+    public void addLast(T item) {
+        Node newNode = new Node(item, sentBack.prev, sentBack);
+        newNode.prev.next = newNode;
+        newNode.next.prev = newNode;
         size += 1;
     }
 
@@ -66,7 +66,7 @@ public class LinkedListDeque<T> {
      * Returns true if deque is empty, false otherwise.
      * @return
      */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -74,7 +74,7 @@ public class LinkedListDeque<T> {
      * Returns the number of items in the deque.
      * @return
      */
-    public int size(){
+    public int size() {
         return size;
     }
 
@@ -83,7 +83,7 @@ public class LinkedListDeque<T> {
      */
     public void printDeque() {
         Node p = sentFront;
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             p = p.next;
             System.out.print(p.item);
             System.out.print(" ");
@@ -96,14 +96,14 @@ public class LinkedListDeque<T> {
      * @return
      */
     public T removeFirst() {
-        if (size == 0){
+        if (size == 0) {
             return null;
         }
-        Node to_remove = sentFront.next;
-        to_remove.prev.next = to_remove.next;
-        to_remove.next.prev = sentFront;
+        Node toRemove = sentFront.next;
+        toRemove.prev.next = toRemove.next;
+        toRemove.next.prev = sentFront;
         size -= 1;
-        return to_remove.item;
+        return toRemove.item;
     }
 
     /**
@@ -111,14 +111,14 @@ public class LinkedListDeque<T> {
      * @return
      */
     public T removeLast() {
-        if (size == 0 ){
+        if (size == 0) {
             return null;
         }
-        Node to_remove = sentBack.prev;
-        to_remove.prev.next = to_remove.next;
-        to_remove.next.prev = to_remove.prev;
+        Node toRemove = sentBack.prev;
+        toRemove.prev.next = toRemove.next;
+        toRemove.next.prev = toRemove.prev;
         size -= 1;
-        return to_remove.item;
+        return toRemove.item;
     }
 
     /**
@@ -127,7 +127,7 @@ public class LinkedListDeque<T> {
      * @param index
      * @return
      */
-    public T get(int index){
+    public T get(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
@@ -157,7 +157,7 @@ public class LinkedListDeque<T> {
      * @param index
      * @return
      */
-    public T getRecursive(int index){
+    public T getRecursive(int index) {
         if (index >= size) {
             return null;
         }
@@ -169,7 +169,7 @@ public class LinkedListDeque<T> {
      * get the number index node's item counting from starting node
      * If start is null or index is out of range, return null.
      */
-    private T getFromRecursive(Node start, int index){
+    private T getFromRecursive(Node start, int index) {
         if (start == null) {
             return null;
         }
