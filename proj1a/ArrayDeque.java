@@ -42,7 +42,7 @@ public class ArrayDeque<T> {
      * be negative.
      */
     private int getCircularIndex(int start, int count) {
-        return ((start + count ) % capacity + capacity) % capacity;
+        return ((start + count) % capacity + capacity) % capacity;
     }
 
     /**
