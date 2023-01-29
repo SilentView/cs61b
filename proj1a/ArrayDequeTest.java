@@ -152,7 +152,10 @@ public class ArrayDequeTest {
         }
         //test removeLast with resize
         for (int i = 0; i < 25; i++) {
-            arrayd1.removeLast();
+            Integer removed = arrayd1.removeLast();
+            if (!removed.equals(32 - i - 1)) {
+                System.out.println("Test failed! Something wrong with removeLast's return value\n");
+            }
         }
         for (int i = 0; i < 32 - 25; i++) {
             if (!arrayd1.get(i).equals(i)) {

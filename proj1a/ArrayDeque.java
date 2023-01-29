@@ -155,7 +155,7 @@ public class ArrayDeque<T> {
 
         sentFrontIdx = getCircularIndex(sentFrontIdx, 1);
         size -= 1;
-        return arrayBase[getCircularIndex(sentFrontIdx, -1)];
+        return arrayBase[sentFrontIdx];
     }
 
     /**
@@ -171,7 +171,7 @@ public class ArrayDeque<T> {
         }
         sentBackIdx = getCircularIndex(sentBackIdx, -1);
         size -= 1;
-        return arrayBase[getCircularIndex(sentBackIdx, 1)];
+        return arrayBase[sentBackIdx];
     }
 
     /**
