@@ -35,14 +35,12 @@ public class LinkedListDequeTest {
 	  * && is the "and" operation. */
 	public static void addIsEmptySizeTest() {
 		System.out.println("Running add/isEmpty/Size test.");
-		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
 		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
 		lld1.addFirst("front");
-		
+
 		// The && operator is the same as "and" in Python.
 		// It's a binary operator that returns true if both arguments true, and false otherwise.
 		passed = checkSize(1, lld1.size()) && passed;
@@ -58,7 +56,6 @@ public class LinkedListDequeTest {
 		lld1.printDeque();
 
 		printTestStatus(passed);
-		*/
 	}
 
 	/** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
@@ -66,8 +63,6 @@ public class LinkedListDequeTest {
 
 		System.out.println("Running add/remove test.");
 
-		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
-		/*
 		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
@@ -81,12 +76,65 @@ public class LinkedListDequeTest {
 		passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
 		printTestStatus(passed);
-		*/
 	}
 
+	/**
+	 * add some Integer items and check the whether the sequence is as expected
+	 * then remove something and check the sequence
+	 */
+	public static void addGetRemoveTest() {
+		System.out.println("Running add/get/remove test.");
+
+		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+		Integer[] exp = new Integer[4];
+		for (int i = 0; i < 4; i++) {
+			exp[i] = i;
+		}
+		//test the addFirst
+		lld1.addFirst(1);
+		lld1.addFirst(0);
+		for (int i = 0; i < lld1.size(); i++){
+			if (! lld1.get(i).equals(exp[i])) {
+				System.out.println("Test failed! Something wrong with addFirst\n");
+				return;
+			}
+		}
+
+		//test the addLast
+		lld1.addLast(2);
+		lld1.addLast(3);
+		for (int i = 2; i < lld1.size(); i++){
+			if (! lld1.get(i).equals(exp[i])) {
+				System.out.println("Test failed! Something wrong with addLast\n");
+				return;
+			}
+		}
+
+		//test getRecursive
+		for (int i = 2; i < lld1.size(); i++){
+			if (! lld1.getRecursive(i).equals(exp[i])) {
+				System.out.println("Test failed! Something wrong with getRecursive\n");
+				return;
+			}
+		}
+
+		//test Print
+		System.out.println("Next line you should see 0 1 2 3");
+		lld1.printDeque();
+
+		//test the removeFirst
+		lld1.removeFirst();
+		if (! lld1.get(0).equals(1)) {
+			System.out.println("Test failed! Something wrong with removeFirst\n");
+			return;
+		}
+
+		System.out.println("Test passed");
+	}
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
+		addGetRemoveTest();
 	}
 } 
