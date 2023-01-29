@@ -67,8 +67,8 @@ public class ArrayDeque<T> {
         }
         arrayBase = arrayDoubled;
         capacity = arrayDoubled.length;
-        sentBackIdx = size - 1;
-        sentFrontIdx = 0;
+        sentBackIdx = size;
+        sentFrontIdx = getCircularIndex(0, -1);
     }
 
     /**
@@ -82,8 +82,8 @@ public class ArrayDeque<T> {
         }
         arrayBase = arrayHalved;
         capacity = arrayHalved.length;
-        sentBackIdx = size - 1;
-        sentFrontIdx = 0;
+        sentBackIdx = size;
+        sentFrontIdx = getCircularIndex(0, -1);
     }
 
 

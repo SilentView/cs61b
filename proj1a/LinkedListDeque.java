@@ -21,12 +21,12 @@ public class LinkedListDeque<T> {
     /**
      * Sentinel Node at the front
      */
-    Node sentFront;
+    private Node sentFront;
     /**
      * Sentinel Node at the back
      */
-    Node sentBack;
-    int size;
+    private Node sentBack;
+    private int size;
 
     /**
      * Creates an empty linked list deque.

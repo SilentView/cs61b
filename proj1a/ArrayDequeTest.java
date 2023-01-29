@@ -132,10 +132,44 @@ public class ArrayDequeTest {
         System.out.println("Test passed");
     }
 
+    /**
+     * test add/remove involving resize
+     */
+    public static void addRemoveResizeTest() {
+        System.out.println("Running add/get/remove(involving resize) test.");
+        ArrayDeque<Integer> arrayd1 = new ArrayDeque<Integer>();
+        for (int i = 0; i < 16; i++) {
+            arrayd1.addFirst(15 - i);
+        }
+        for (int j = 16; j < 32; j++) {
+            arrayd1.addLast(j);
+        }
+        for (int i = 0; i < arrayd1.size(); i++) {
+            if (!arrayd1.get(i).equals(i)) {
+                System.out.println("Test failed! Something wrong with resize\n");
+                return;
+            }
+        }
+        //test removeLast with resize
+        for (int i = 0; i < 25; i++) {
+            arrayd1.removeLast();
+        }
+        for (int i = 0; i < 32 - 25; i++) {
+            if (!arrayd1.get(i).equals(i)) {
+                System.out.println("Test failed! Something wrong with resize when removeLast\n");
+                return;
+            }
+        }
+
+        System.out.println("Test passed");
+    }
+
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
         addGetRemoveTest();
+        addRemoveResizeTest();
     }
 }
